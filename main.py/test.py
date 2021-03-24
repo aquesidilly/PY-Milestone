@@ -48,10 +48,10 @@ class AppTests(AppTestCase):
     def test_register_mismatch_passwords(self):
         """Check mismatched passwords on the registration form, expecting mismatch message"""
         res = self.client.post('/register', data=dict(
-            username='fred',
+            username='Jeff',
             password='joijqwdoijqwoid',
             password2='qoijwdoiqwjdoiqwd',
-            email='fred@aol.com',
+            email='jeff@aol.com',
         ))
         data = res.data.decode('utf-8')
         assert 'Passwords must match' in data
@@ -59,18 +59,18 @@ class AppTests(AppTestCase):
     def test_register_duplicate_username(self):
         """Check entering a username that is already used returns username is already taken message"""
         res = self.client.post('/register', follow_redirects=True, data=dict(
-            username='fred',
-            password='asdfasdfasdf',
-            password2='asdfasdfasdf',
-            email='fred@aol.com',
+            username='Fremah',
+            password='akuaghfad',
+            password2='akuaghfad',
+            email='fremah@aol.com',
         ))
         data = res.data.decode('utf-8')
         assert 'A Collection of Movies' in data
         res = self.client.post('/register', follow_redirects=True, data=dict(
-            username='fred',
-            password='asdfasdfasdf',
-            password2='asdfasdfasdf',
-            email='fred@aol.com',
+            username='Akwasi',
+            password='ananaghqfth',
+            password2='ananaghqfth',
+            email='akwasi7@aol.com',
         ))
         data = res.data.decode('utf-8')
         assert res.status == '200 OK'
@@ -79,10 +79,10 @@ class AppTests(AppTestCase):
     def test_register_successful(self):
         """Check valid registration redirects to index page"""
         res = self.client.post('/register', follow_redirects=True, data=dict(
-            username='freddie',
-            password='asdfasdfasdf',
-            password2='asdfasdfasdf',
-            email='freddie@aol.com',
+            username='Kofi',
+            password='basumadugh',
+            password2='basumadugh',
+            email='kofi11@aol.com',
         ))
         data = res.data.decode('utf-8')
         assert res.status == '200 OK'
@@ -98,35 +98,35 @@ class LoggedInTests(AppTestCase):
         """
         super().setUp()
         res = self.client.post('/register', follow_redirects=True, data=dict(
-            username='fred3',
-            password='asdfasdfasdf',
-            password2='asdfasdfasdf',
-            email='fred3@aol.com',
+            username='Nana',
+            password='kaisafagh',
+            password2='kaisafagh',
+            email='nana@aol.com',
         ))
         res = self.client.post('/create_movie', follow_redirects=True, data={
-            'title': 'Mac and cheese',
-            'short_description': 'Get this mac and cheese',
-            'ingredients': '8 spring onions',
+            'title': 'Magnificient 7',
+            'short_description': 'Action and Thriller',
+            'collection': 'Magnificient 7',
             'method': 'Put all the collections',
-            'tags': 'cheese, slow',
+            'tags': 'Action and Thriller, slow',
             'image': 'some image link'
         })
         data = res.data.decode('utf-8')
-        assert 'fred3' in data
-        assert 'Mac and cheese'
+        assert 'Nana' in data
+        assert 'Once Upon a time in China'
 
     def test_create_movie(self):
         """Create movie and check new movie shows after redirect"""
         res = self.client.post('/create_movie', follow_redirects=True, data={
-            'title': 'Slow - cooker vegan bean chilli',
-            'short_description': 'Get this vegan',
-            'ingredients': '8 spring onions',
+            'title': 'Eraser',
+            'short_description': 'Action movie',
+            'ingredients': 'Eraser',
             'method': 'Put all the collections',
-            'tags': 'vegan, slow',
+            'tags': 'Action, slow',
             'image': 'some image link'
         })
         data = res.data.decode('utf-8')
-        assert 'vegan' in data
+        assert 'Action' in data
 
     def test_movie_page(self):
         """Find Movie and go to it's movie page"""
@@ -139,7 +139,7 @@ class LoggedInTests(AppTestCase):
         res = self.client.get('/movie/{}'.format(ids[0]))
         data = res.data.decode('utf-8')
         assert res.status == '200 OK'
-        assert 'Mac and cheese' in data
+        assert 'Perfect Picture' in data
 
     def test_edit_movie(self):
         """Edit movie and check redirect to home page"""
@@ -149,13 +149,13 @@ class LoggedInTests(AppTestCase):
         res = self.client.get('/edit_movie/{}'.format(ids[0]))
         data = res.data.decode('utf-8')
         assert res.status == '200 OK'
-        assert 'Mac and cheese' in data
+        assert 'The Revenge' in data
         res = self.client.post('/edit_movie/'.format(ids[0]), follow_redirects=True, data={
-            'title': 'Mac and cheese',
-            'short_description': 'Get this maccy and cheese',
-            'collections': '8 blocks of cheddar',
+            'title': 'The Revenge',
+            'short_description': 'Thriller',
+            'collections': 'Series',
             'method': 'Put all the collection',
-            'tags': 'cheese, slow',
+            'tags': 'Thriller, slow',
             'image': 'some image link'
         })
         assert res.status == '200 OK'
@@ -166,8 +166,8 @@ class LoggedInTests(AppTestCase):
         # use regular expression to find Object id of recipe
         ids = re.findall(r'href="/movie/(\w+)"', res.data.decode("utf-8"))
         assert len(ids) > 0
-        # togo that delete recipe page using extracted id
+        # togo that delete movie page using extracted id
         res = self.client.post('/delete_movie/{}'.format(ids[0]), follow_redirects=True)
         data = res.data.decode('utf-8')
         assert res.status == '200 OK'
-        assert 'Mac and cheese' not in data
+        assert 'Fatal 5' not in data
