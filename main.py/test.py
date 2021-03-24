@@ -38,7 +38,7 @@ class AppTests(AppTestCase):
         assert res.status == '200 OK'
         assert 'A Collection of Movies' in data
 
-    def test_recipes(self):
+    def test_movies(self):
         """Test movie list page loading"""
         res = self.client.get('/movies')
         data = res.data.decode('utf-8')
