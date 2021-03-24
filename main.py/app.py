@@ -1,6 +1,6 @@
 from flask import Flask, render_template, flash, redirect, url_for, request, session
 from config import Config
-from forms import LoginForm, RegisterForm, CreateMovieForm, EditRecipeForm, ConfirmDelete
+from forms import LoginForm, RegisterForm, CreateMovieForm, EditMovieForm, ConfirmDelete
 from flask_pymongo import PyMongo, DESCENDING
 from bson.objectid import ObjectId
 import bcrypt
@@ -189,7 +189,7 @@ def movie(movie_id):
         {'$inc': {'views': 1}}
     )
     movie_db = mongo.db.movies.find_one_or_404({'_id': ObjectId(movie_id)})
-    return render_template('movie.html', recipe=movie_db)
+    return render_template('movie.html', movie=movie_db)
 
 
 @app.errorhandler(404)
