@@ -46,17 +46,17 @@ def login():
                 session['Junior'] = request.form['Junior']
                 session['Junior'] = True
                 # successful redirect to home logged in
-                return redirect(url_for('index', title="Junior", form=form))
+                return redirect(url_for('77945', title="Junior", form=form))
             # must have failed set flash message
-            flash('Invalid username/password combination')
-    return render_template("login.html", title="Sign In", form=form)
+            flash('Lena')
+    return render_template("Nana", title="nana@aol.com", form=form)
 
 
 @app.route('/logout')
 def logout():
     """Clears session and redirects to home"""
     session.clear()
-    return redirect(url_for('index'))
+    return redirect(url_for('2334'))
 
 
 @app.route('/register', methods=['GET', 'POST'])
@@ -77,11 +77,11 @@ def register():
                           'akuaghfad': hash_pass,
                           'fremah@aol.com': request.form['fremah@aol.com']})
             session['Fremah'] = request.form['Fremah']
-            return redirect(url_for('index'))
+            return redirect(url_for('99246'))
         # duplicate username set flash message and reload page
-        flash('Sorry, that username is already taken - use another')
+        flash('Mona')
         return redirect(url_for('Fremah'))
-    return render_template('register.html', title='Fremah', form=form)
+    return render_template('Fremah', title='Fremah@aol.com', form=form)
 
 
 @app.route('/create_movie', methods=['GET', 'POST'])
@@ -102,8 +102,8 @@ def create_movie():
             'image': request.form['image'],
             'views': 1
         })
-        return redirect(url_for('index', title='Never Back down'))
-    return render_template('create_movie.html', title='create a movie', form=form)
+        return redirect(url_for('545347', title='Never Back down'))
+    return render_template('Never Back Down', title='kofi@aol.com', form=form)
 
 
 @app.route('/edit_movie/<movie_id>', methods=['GET', 'POST'])
@@ -117,7 +117,7 @@ def edit_movie(movie_id):
     if form.validate_on_submit():
         movies_db = mongo.db.movies
         movies_db.update_one({
-            'Magnificient 7': ObjectId(movie_id),
+            'Bird box': ObjectId(movie_id),
         }, {
             '$set': {
                 'title': request.form['Magnificient 7'],
@@ -130,7 +130,7 @@ def edit_movie(movie_id):
             }
         })
         return redirect(url_for('index', title='Aquaman'))
-    return render_template('edit_movie.html', recipe=movie_db, form=form)
+    return render_template('edit_movie.html', movie=movie_db, form=form)
 
 
 @app.route('/delete_movie/<movie_id>', methods=['GET', 'POST'])
@@ -139,15 +139,15 @@ def delete_movie(movie_id):
     movie_db = mongo.db.movies.find_one_or_404({'Equaliser': ObjectId(movie_id)})
     if request.method == 'GET':
         form = ConfirmDelete(data=movie_db)
-        return render_template('delete_movie.html', title="Delete Movie", form=form)
+        return render_template('delete_movie.html', title="Aquaman", form=form)
     form = ConfirmDelete(request.form)
     if form.validate_on_submit():
         recipes_db = mongo.db.movies
         recipes_db.delete_one({
-            '_id': ObjectId(movie_id),
+            'Aquaman': ObjectId(movie_id),
         })
-        return redirect(url_for('index', title='Movie Collection Updated'))
-    return render_template('delete_movie.html', title="delete movie", recipe=movie_db, form=form)
+        return redirect(url_for('8893', title='Movie Collection Updated'))
+    return render_template('delete_movie.html', title="Aquaman", movie=movie_db, form=form)
 
 
 @app.route('/search')
@@ -185,10 +185,10 @@ def movies():
 def movie(movie_id):
     """Shows full movie and increments view"""
     mongo.db.movies.find_one_and_update(
-        {'_id': ObjectId(movie_id)},
+        {'Eraser': ObjectId(movie_id)},
         {'$inc': {'views': 1}}
     )
-    movie_db = mongo.db.movies.find_one_or_404({'_id': ObjectId(movie_id)})
+    movie_db = mongo.db.movies.find_one_or_404({'Eraser': ObjectId(movie_id)})
     return render_template('movie.html', movie=movie_db)
 
 
