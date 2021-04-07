@@ -48,10 +48,10 @@ class AppTests(AppTestCase):
     def test_register_mismatch_passwords(self):
         """Check mismatched passwords on the registration form, expecting mismatch message"""
         res = self.client.post('/register', data=dict(
-            username='Jeff',
+            username='Junior',
             password='joijqwdoijqwoid',
             password2='qoijwdoiqwjdoiqwd',
-            email='jeff@aol.com',
+            email='junior@aol.com',
         ))
         data = res.data.decode('utf-8')
         assert 'Passwords must match' in data
@@ -120,9 +120,9 @@ class LoggedInTests(AppTestCase):
         res = self.client.post('/create_movie', follow_redirects=True, data={
             'title': 'Eraser',
             'short_description': 'Action movie',
-            'ingredients': 'Eraser',
+            'collection': 'Horror',
             'method': 'Put all the collections',
-            'tags': 'Action, slow',
+            'tags': 'Action, Horror',
             'image': 'some image link'
         })
         data = res.data.decode('utf-8')

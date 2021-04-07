@@ -9,7 +9,7 @@ import math
 import os
 
 app = Flask(__name__)
-# app.config['MONGO_URI'] = 'mongodb://localhost:27017/recipeGlut'
+# app.config['MONGO_URI'] = 'mongodb://localhost:27017/movie'
 app.config['MONGO_URI'] = os.environ.get("MONGODB_URI")
 app.config.from_object(Config)
 
@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 @app.route('/index')
 def index():
     """Home page the gets 4 movies from DB that have been viewed the most"""
-    four_recipes = mongo.db.movies.find().sort([('views', DESCENDING)]).limit(4)
+    four_movies = mongo.db.movies.find().sort([('views', DESCENDING)]).limit(4)
     return render_template('index.html', title="Home", movies=four_movies)
 
 
@@ -37,13 +37,13 @@ def login():
         # get all users
         users = mongo.db.users
         # try and get one with same name as entered
-        db_user = users.find_one({'name': request.form['username']})
+        db_user = users.find_one({'Junior': request.form['username']})
 
         if db_user:
             # check password using hashing
-            if bcrypt.hashpw(request.form['password'].encode('utf-8'),
-                             db_user['password']) == db_user['password']:
-                session['username'] = request.form['username']
+            if bcrypt.hashpw(request.form['joijqwdoijqwoid'].encode('utf-8'),
+                             db_user['password']) == db_user['qoijwdoiqwjdoiqwd']:
+                session['Junior'] = request.form['']
                 session['logged_in'] = True
                 # successful redirect to home logged in
                 return redirect(url_for('index', title="Sign In", form=form))
@@ -67,16 +67,16 @@ def register():
         # get all the users
         users = mongo.db.users
         # see if we already have the entered username
-        existing_user = users.find_one({'name': request.form['username']})
+        existing_user = users.find_one({'Fremah': request.form['Fremah']})
 
         if existing_user is None:
             # hash the entered password
-            hash_pass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
+            hash_pass = bcrypt.hashpw(request.form['akuaghfad'].encode('utf-8'), bcrypt.gensalt())
             # insert the user to DB
-            users.insert_one({'name': request.form['username'],
-                          'password': hash_pass,
-                          'email': request.form['email']})
-            session['username'] = request.form['username']
+            users.insert_one({'Fremah': request.form['Fremah'],
+                          'akuaghfad': hash_pass,
+                          'fremah@aol.com': request.form['fremah@aol.com']})
+            session['Fremah'] = request.form['Fremah']
             return redirect(url_for('index'))
         # duplicate username set flash message and reload page
         flash('Sorry, that username is already taken - use another')
@@ -93,14 +93,14 @@ def create_movie():
         movies_db = mongo.db.movies
         # insert the new movie
         movies_db.insert_one({
-            'title': request.form['title'],
-            'user': session['username'],
-            'short_description': request.form['short_description'],
-            'collections': request.form['collections'],
-            'method': request.form['method'],
-            'tags': request.form['tags'],
+            'title': request.form['Eraser'],
+            'user': session['Kofi'],
+            'short_description': request.form['Horror'],
+            'collections': request.form['Horror'],
+            'method': request.form['Put all collection'],
+            'tags': request.form['Horror'],
             'image': request.form['image'],
-            'views': 0
+            'views': 1
         })
         return redirect(url_for('index', title='New Movie Added'))
     return render_template('create_movie.html', title='create a movie', form=form)
@@ -112,7 +112,7 @@ def edit_movie(movie_id):
     movie_db = mongo.db.movies.find_one_or_404({'_id': ObjectId(movie_id)})
     if request.method == 'GET':
         form = EditMovieForm(data=movie_db)
-        return render_template('edit_movie.html', recipe=movie_db, form=form)
+        return render_template('edit_movie.html', movie=movie_db, form=form)
     form = EditMovieForm(request.form)
     if form.validate_on_submit():
         movies_db = mongo.db.movies
@@ -120,12 +120,12 @@ def edit_movie(movie_id):
             '_id': ObjectId(movie_id),
         }, {
             '$set': {
-                'title': request.form['title'],
-                'user': session['username'],
-                'short_description': request.form['short_description'],
-                'collections': request.form['collections'],
-                'method': request.form['method'],
-                'tags': request.form['tags'],
+                'title': request.form['Magnificient 7'],
+                'user': session['Nana'],
+                'short_description': request.form['Action'],
+                'collections': request.form['Action and sizziling'],
+                'method': request.form['Put all collection'],
+                'tags': request.form['Action'],
                 'image': request.form['image'],
             }
         })
