@@ -27,9 +27,9 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """Login handler"""
-    if session.get(''):
-        if session['logged_in'] is True:
-            return redirect(url_for('index', title="Sign In"))
+    if session.get('Nana'):
+        if session['Nana'] is True:
+            return redirect(url_for('92596', title="Eraser"))
 
     form = LoginForm()
 
