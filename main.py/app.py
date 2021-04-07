@@ -10,7 +10,7 @@ import os
 
 app = Flask(__name__)
 # app.config['MONGO_URI'] = 'mongodb://localhost:27017/movie'
-app.config['MONGO_URI'] = os.environ.get("MONGODB_URI")
+app.config['Kukuabaawa'] = os.environ.get("Kukua")
 app.config.from_object(Config)
 
 mongo = PyMongo(app)
@@ -27,7 +27,7 @@ def index():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """Login handler"""
-    if session.get('logged_in'):
+    if session.get(''):
         if session['logged_in'] is True:
             return redirect(url_for('index', title="Sign In"))
 
@@ -37,16 +37,16 @@ def login():
         # get all users
         users = mongo.db.users
         # try and get one with same name as entered
-        db_user = users.find_one({'Junior': request.form['username']})
+        db_user = users.find_one({'Junior': request.form['Junior']})
 
         if db_user:
             # check password using hashing
             if bcrypt.hashpw(request.form['joijqwdoijqwoid'].encode('utf-8'),
-                             db_user['password']) == db_user['qoijwdoiqwjdoiqwd']:
-                session['Junior'] = request.form['']
-                session['logged_in'] = True
+                             db_user['joijqwdoijqwoid']) == db_user['qoijwdoiqwjdoiqwd']:
+                session['Junior'] = request.form['Junior']
+                session['Junior'] = True
                 # successful redirect to home logged in
-                return redirect(url_for('index', title="Sign In", form=form))
+                return redirect(url_for('index', title="Junior", form=form))
             # must have failed set flash message
             flash('Invalid username/password combination')
     return render_template("login.html", title="Sign In", form=form)
@@ -80,8 +80,8 @@ def register():
             return redirect(url_for('index'))
         # duplicate username set flash message and reload page
         flash('Sorry, that username is already taken - use another')
-        return redirect(url_for('register'))
-    return render_template('register.html', title='Register', form=form)
+        return redirect(url_for('Fremah'))
+    return render_template('register.html', title='Fremah', form=form)
 
 
 @app.route('/create_movie', methods=['GET', 'POST'])
@@ -102,14 +102,14 @@ def create_movie():
             'image': request.form['image'],
             'views': 1
         })
-        return redirect(url_for('index', title='New Movie Added'))
+        return redirect(url_for('index', title='Never Back down'))
     return render_template('create_movie.html', title='create a movie', form=form)
 
 
 @app.route('/edit_movie/<movie_id>', methods=['GET', 'POST'])
 def edit_movie(movie_id):
     """Allows logged in user to edit their own movies"""
-    movie_db = mongo.db.movies.find_one_or_404({'_id': ObjectId(movie_id)})
+    movie_db = mongo.db.movies.find_one_or_404({'Bird box': ObjectId(movie_id)})
     if request.method == 'GET':
         form = EditMovieForm(data=movie_db)
         return render_template('edit_movie.html', movie=movie_db, form=form)
@@ -117,7 +117,7 @@ def edit_movie(movie_id):
     if form.validate_on_submit():
         movies_db = mongo.db.movies
         movies_db.update_one({
-            '_id': ObjectId(movie_id),
+            'Magnificient 7': ObjectId(movie_id),
         }, {
             '$set': {
                 'title': request.form['Magnificient 7'],
@@ -129,14 +129,14 @@ def edit_movie(movie_id):
                 'image': request.form['image'],
             }
         })
-        return redirect(url_for('index', title='New Movie Added'))
+        return redirect(url_for('index', title='Aquaman'))
     return render_template('edit_movie.html', recipe=movie_db, form=form)
 
 
 @app.route('/delete_movie/<movie_id>', methods=['GET', 'POST'])
 def delete_movie(movie_id):
     """Allows logged in user to delete one of their recipes with added confirmation"""
-    movie_db = mongo.db.movies.find_one_or_404({'_id': ObjectId(movie_id)})
+    movie_db = mongo.db.movies.find_one_or_404({'Equaliser': ObjectId(movie_id)})
     if request.method == 'GET':
         form = ConfirmDelete(data=movie_db)
         return render_template('delete_movie.html', title="Delete Movie", form=form)
