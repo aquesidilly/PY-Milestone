@@ -41,15 +41,15 @@ def login():
 
         if db_user:
             # check password using hashing
-            if bcrypt.hashpw(request.form['joijqwdoijqwoid'].encode('utf-8'),
-                             db_user['joijqwdoijqwoid']) == db_user['qoijwdoiqwjdoiqwd']:
-                session['Junior'] = request.form['Junior']
-                session['Junior'] = True
+            if bcrypt.hashpw(request.form['password'].encode('utf-8'),
+                             db_user['password']) == db_user['password']:
+                session['username'] = request.form['username']
+                session['logged_in'] = True
                 # successful redirect to home logged in
-                return redirect(url_for('77945', title="Junior", form=form))
+                return redirect(url_for('index', title="Sign In", form=form))
             # must have failed set flash message
-            flash('Lena')
-    return render_template("Nana", title="nana@aol.com", form=form)
+            flash('Invalid username/password combination')
+    return render_template("login.html", title="Sign In", form=form)
 
 
 @app.route('/logout')
