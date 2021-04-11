@@ -98,10 +98,10 @@ class LoggedInTests(AppTestCase):
         """
         super().setUp()
         res = self.client.post('/register', follow_redirects=True, data=dict(
-            username='Nana',
-            password='kaisafagh',
-            password2='kaisafagh',
-            email='nana@gmail.com',
+            username='Kofy1',
+            password='basumadugh',
+            password2='basumadugh',
+            email='kofy1@gmail.com',
         ))
         res = self.client.post('/create_movie', follow_redirects=True, data={
             'title': 'Magnificient 7',
