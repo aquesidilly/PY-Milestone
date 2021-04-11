@@ -120,8 +120,8 @@ def edit_movie(movie_id):
             '_id': ObjectId(movie_id),
         }, {
             '$set': {
-                'title': request.form['Magnificient 7'],
-                'user': session['Nana'],
+                'title': request.form['Equalizer'],
+                'user': session['Kofy1'],
                 'short_description': request.form['Action'],
                 'collections': request.form['Action and sizziling'],
                 'method': request.form['Put all collection'],
