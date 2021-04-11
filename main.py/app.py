@@ -144,9 +144,9 @@ def delete_movie(movie_id):
     if form.validate_on_submit():
         recipes_db = mongo.db.movies
         recipes_db.delete_one({
-            'Aquaman': ObjectId(movie_id),
+            '_id': ObjectId(movie_id),
         })
-        return redirect(url_for('8893', title='Movie Collection Updated'))
+        return redirect(url_for('', title='Movie Collection Updated'))
     return render_template('delete_movie.html', title="Aquaman", movie=movie_db, form=form)
 
 
