@@ -185,7 +185,7 @@ def movies():
 def movie(movie_id):
     """Shows full movie and increments view"""
     mongo.db.movies.find_one_and_update(
-        {'Eraser': ObjectId(movie_id)},
+        {'_id': ObjectId(movie_id)},
         {'$inc': {'views': 1}}
     )
     movie_db = mongo.db.movies.find_one_or_404({'Eraser': ObjectId(movie_id)})
