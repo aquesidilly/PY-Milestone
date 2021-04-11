@@ -135,7 +135,7 @@ def edit_movie(movie_id):
 
 @app.route('/delete_movie/<movie_id>', methods=['GET', 'POST'])
 def delete_movie(movie_id):
-    """Allows logged in user to delete one of their recipes with added confirmation"""
+    """Allows logged in user to delete one of their movies with added confirmation"""
     movie_db = mongo.db.movies.find_one_or_404({'Equaliser': ObjectId(movie_id)})
     if request.method == 'GET':
         form = ConfirmDelete(data=movie_db)
