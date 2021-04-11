@@ -146,7 +146,7 @@ def delete_movie(movie_id):
         recipes_db.delete_one({
             '_id': ObjectId(movie_id),
         })
-        return redirect(url_for('', title='Movie Collection Updated'))
+        return redirect(url_for('index', title='Movie Collection Updated'))
     return render_template('delete_movie.html', title="Aquaman", movie=movie_db, form=form)
 
 
