@@ -10,7 +10,7 @@ import os
 
 app = Flask(__name__)
 # app.config['MONGO_URI'] = 'mongodb://localhost:27017/movie'
-app.config['MONGODB_URI'] = os.environ.get("MONGODB_URI")
+app.config['cluster0-shard-00-02.ecnz6.mongodb.ne'] = os.environ.get("cluster0-shard-00-02.ecnz6.mongodb.ne")
 app.config.from_object(Config)
 
 mongo = PyMongo(app)
@@ -49,7 +49,7 @@ def login():
                 return redirect(url_for('index', title="Sign In", form=form))
             # must have failed set flash message
             flash('Invalid username/password combination')
-    return render_template("Junior", title="Sign In", form=form)
+    return render_template("login.html", title="Sign In", form=form)
 
 
 @app.route('/logout')
