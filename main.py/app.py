@@ -129,7 +129,7 @@ def edit_movie(movie_id):
                 'image': request.form['image'],
             }
         })
-        return redirect(url_for('index', title='Aquaman'))
+        return redirect(url_for('index', title='New Movie Added'))
     return render_template('edit_movie.html', movie=movie_db, form=form)
 
 
