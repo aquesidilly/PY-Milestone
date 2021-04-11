@@ -112,21 +112,21 @@ class LoggedInTests(AppTestCase):
             'image': 'some image link'
         })
         data = res.data.decode('utf-8')
-        assert 'Nana' in data
+        assert 'Kofy1' in data
         assert 'A Collection Movies'
 
     def test_create_movie(self):
         """Create movie and check new movie shows after redirect"""
         res = self.client.post('/create_movie', follow_redirects=True, data={
             'title': 'Eraser',
-            'short_description': 'Action movie',
+            'short_description': 'Action/Horror movie',
             'collection': 'Horror',
             'method': 'Put all the collections',
             'tags': 'Action, Horror',
             'image': 'some image link'
         })
         data = res.data.decode('utf-8')
-        assert 'Action' in data
+        assert 'Action/Horror' in data
 
     def test_movie_page(self):
         """Find Movie and go to it's movie page"""
