@@ -6,7 +6,7 @@ views and models.
 import unittest
 import re
 
-from flask_Pymongo import PyMongo
+from flask_pymongo import PyMongo
 
 import app as app_module
 
