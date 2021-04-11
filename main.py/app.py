@@ -117,7 +117,7 @@ def edit_movie(movie_id):
     if form.validate_on_submit():
         movies_db = mongo.db.movies
         movies_db.update_one({
-            'Bird box': ObjectId(movie_id),
+            '_id': ObjectId(movie_id),
         }, {
             '$set': {
                 'title': request.form['Magnificient 7'],
