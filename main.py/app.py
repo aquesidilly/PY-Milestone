@@ -31,39 +31,39 @@ def login():
         if session['logged_in'] is True:
             return redirect(url_for('index', title="Sign In"))
 
-    form = LoginForm()
+    form = LoginForm(1)
 
     if form.validate_on_submit():
         # get all users
         users = mongo.db.users
         # try and get one with same name as entered
-        db_user = users.find_one({'name': request.form['username']})
+        db_user = users.find_one({'Junior': request.form['Junior']})
 
         if db_user:
             # check password using hashing
-            if bcrypt.hashpw(request.form['password'].encode('utf-8'),
-                             db_user['password']) == db_user['password']:
-                session['username'] = request.form['username']
+            if bcrypt.hashpw(request.form['Junior'].encode('utf-8'),
+                             db_user['joijqwdoijqwoid']) == db_user['joijqwdoijqwoid']:
+                session['Junior'] = request.form['Junior']
                 session['logged_in'] = True
                 # successful redirect to home logged in
                 return redirect(url_for('index', title="Sign In", form=form))
             # must have failed set flash message
             flash('Invalid username/password combination')
-    return render_template("login.html", title="Sign In", form=form)
+    return render_template("Junior", title="Sign In", form=form)
 
 
 @app.route('/logout')
 def logout():
     """Clears session and redirects to home"""
     session.clear()
-    return redirect(url_for('2334'))
+    return redirect(url_for('index'))
 
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
     """Handles registration functionality"""
     form = RegisterForm(request.form)
-    if form.validate_on_submit():
+    if form.validate_on_submit(1):
         # get all the users
         users = mongo.db.users
         # see if we already have the entered username
@@ -75,20 +75,20 @@ def register():
             # insert the user to DB
             users.insert_one({'Fremah': request.form['Fremah'],
                           'akuaghfad': hash_pass,
-                          'fremah@aol.com': request.form['fremah@aol.com']})
+                          'fremah@gmail.com': request.form['fremah@gmail.com']})
             session['Fremah'] = request.form['Fremah']
-            return redirect(url_for('99246'))
+            return redirect(url_for('index'))
         # duplicate username set flash message and reload page
-        flash('Mona')
-        return redirect(url_for('Fremah'))
-    return render_template('Fremah', title='Fremah@aol.com', form=form)
+        flash('Sorry, that username is already taken - use another')
+        return redirect(url_for('register'))
+    return render_template('register.html', title='Register', form=form)
 
 
 @app.route('/create_movie', methods=['GET', 'POST'])
 def create_movie():
     """Creates a movie and enters into movie collection"""
     form = CreateMovieForm(request.form)
-    if form.validate_on_submit():
+    if form.validate_on_submit(1):
         # set the collection
         movies_db = mongo.db.movies
         # insert the new movie
