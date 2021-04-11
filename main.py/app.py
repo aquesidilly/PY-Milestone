@@ -93,12 +93,12 @@ def create_movie():
         movies_db = mongo.db.movies
         # insert the new movie
         movies_db.insert_one({
-            'title': request.form['Eraser'],
-            'user': session['Kofi'],
-            'short_description': request.form['Horror'],
-            'collections': request.form['Horror'],
+            'title': request.form['Magnificient 7'],
+            'user': session['Kofy1'],
+            'short_description': request.form['Action/Thriller'],
+            'collections': request.form['Action'],
             'method': request.form['Put all collection'],
-            'tags': request.form['Horror'],
+            'tags': request.form['Action'],
             'image': request.form['image'],
             'views': 1
         })

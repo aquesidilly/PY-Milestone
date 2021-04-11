@@ -106,7 +106,7 @@ class LoggedInTests(AppTestCase):
         res = self.client.post('/create_movie', follow_redirects=True, data={
             'title': 'Magnificient 7',
             'short_description': 'Action and Thriller',
-            'collection': 'Magnificient 7',
+            'collection': 'Action',
             'method': 'Put all the collections',
             'tags': 'Action and Thriller, slow',
             'image': 'some image link'
@@ -139,7 +139,7 @@ class LoggedInTests(AppTestCase):
         res = self.client.get('/movie/{}'.format(ids[0]))
         data = res.data.decode('utf-8')
         assert res.status == '200 OK'
-        assert 'Perfect Picture' in data
+        assert 'Magnificient 7' in data
 
     def test_edit_movie(self):
         """Edit movie and check redirect to home page"""
@@ -149,11 +149,11 @@ class LoggedInTests(AppTestCase):
         res = self.client.get('/edit_movie/{}'.format(ids[0]))
         data = res.data.decode('utf-8')
         assert res.status == '200 OK'
-        assert 'The Revenge' in data
+        assert 'Magnificient 7' in data
         res = self.client.post('/edit_movie/'.format(ids[0]), follow_redirects=True, data={
-            'title': 'The Revenge',
-            'short_description': 'Thriller',
-            'collections': 'Series',
+            'title': 'Magnificient 7',
+            'short_description': 'Action/Thriller',
+            'collections': 'Action',
             'method': 'Put all the collection',
             'tags': 'Thriller, slow',
             'image': 'some image link'
@@ -170,4 +170,4 @@ class LoggedInTests(AppTestCase):
         res = self.client.post('/delete_movie/{}'.format(ids[0]), follow_redirects=True)
         data = res.data.decode('utf-8')
         assert res.status == '200 OK'
-        assert 'Fatal 5' not in data
+        assert 'Magnificient 7' not in data
