@@ -188,7 +188,7 @@ def movie(movie_id):
         {'_id': ObjectId(movie_id)},
         {'$inc': {'views': 1}}
     )
-    movie_db = mongo.db.movies.find_one_or_404({'Eraser': ObjectId(movie_id)})
+    movie_db = mongo.db.movies.find_one_or_404({'_id': ObjectId(movie_id)})
     return render_template('movie.html', movie=movie_db)
 
 
