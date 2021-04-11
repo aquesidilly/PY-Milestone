@@ -21,15 +21,15 @@ mongo = PyMongo(app)
 def index():
     """Home page the gets 4 movies from DB that have been viewed the most"""
     four_movies = mongo.db.movies.find().sort([('views', DESCENDING)]).limit(4)
-    return render_template('index.html', title="Sign in", movies=four_movies)
+    return render_template('index.html', title="Home", movies=four_movies)
 
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """Login handler"""
-    if session.get('Nana'):
-        if session['Nana'] is True:
-            return redirect(url_for('92596', title="Eraser"))
+    if session.get('logged_in'):
+        if session['logged_in'] is True:
+            return redirect(url_for('index', title="Sign In"))
 
     form = LoginForm()
 
@@ -37,7 +37,7 @@ def login():
         # get all users
         users = mongo.db.users
         # try and get one with same name as entered
-        db_user = users.find_one({'Junior': request.form['Junior']})
+        db_user = users.find_one({'name': request.form['username']})
 
         if db_user:
             # check password using hashing
