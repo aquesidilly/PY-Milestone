@@ -147,7 +147,7 @@ def delete_movie(movie_id):
             '_id': ObjectId(movie_id),
         })
         return redirect(url_for('index', title='Movie Collection Updated'))
-    return render_template('delete_movie.html', title="Aquaman", movie=movie_db, form=form)
+    return render_template('delete_movie.html', title="delete movie", movie=movie_db, form=form)
 
 
 @app.route('/search')
