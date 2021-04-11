@@ -101,7 +101,7 @@ class LoggedInTests(AppTestCase):
             username='Nana',
             password='kaisafagh',
             password2='kaisafagh',
-            email='nana@aol.com',
+            email='nana@gmail.com',
         ))
         res = self.client.post('/create_movie', follow_redirects=True, data={
             'title': 'Magnificient 7',
