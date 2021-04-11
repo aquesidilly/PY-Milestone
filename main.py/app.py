@@ -102,8 +102,8 @@ def create_movie():
             'image': request.form['image'],
             'views': 1
         })
-        return redirect(url_for('545347', title='Never Back down'))
-    return render_template('Never Back Down', title='kofi@aol.com', form=form)
+        return redirect(url_for('index', title='New Movie Added'))
+    return render_template('create_movie.html', title='create a movie', form=form)
 
 
 @app.route('/edit_movie/<movie_id>', methods=['GET', 'POST'])
