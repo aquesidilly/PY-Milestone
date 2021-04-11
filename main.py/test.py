@@ -51,7 +51,7 @@ class AppTests(AppTestCase):
             username='Junior',
             password='joijqwdoijqwoid',
             password2='qoijwdoiqwjdoiqwd',
-            email='junior@aol.com',
+            email='junior@gmail.com',
         ))
         data = res.data.decode('utf-8')
         assert 'Passwords must match' in data
@@ -62,7 +62,7 @@ class AppTests(AppTestCase):
             username='Fremah',
             password='akuaghfad',
             password2='akuaghfad',
-            email='fremah@aol.com',
+            email='fremah@gmail.com',
         ))
         data = res.data.decode('utf-8')
         assert 'A Collection of Movies' in data
@@ -70,7 +70,7 @@ class AppTests(AppTestCase):
             username='Akwasi',
             password='ananaghqfth',
             password2='ananaghqfth',
-            email='akwasi7@aol.com',
+            email='akwasi7@gmail.com',
         ))
         data = res.data.decode('utf-8')
         assert res.status == '200 OK'
