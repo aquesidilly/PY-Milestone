@@ -82,7 +82,7 @@ class AppTests(AppTestCase):
             username='Kofi',
             password='basumadugh',
             password2='basumadugh',
-            email='kofi11@aol.com',
+            email='kofi11@gmail.com',
         ))
         data = res.data.decode('utf-8')
         assert res.status == '200 OK'
@@ -113,7 +113,7 @@ class LoggedInTests(AppTestCase):
         })
         data = res.data.decode('utf-8')
         assert 'Nana' in data
-        assert 'Once Upon a time in China'
+        assert 'A Collection Movies'
 
     def test_create_movie(self):
         """Create movie and check new movie shows after redirect"""
