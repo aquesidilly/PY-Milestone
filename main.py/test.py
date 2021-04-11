@@ -67,10 +67,10 @@ class AppTests(AppTestCase):
         data = res.data.decode('utf-8')
         assert 'A Collection of Movies' in data
         res = self.client.post('/register', follow_redirects=True, data=dict(
-            username='Akwasi',
-            password='ananaghqfth',
-            password2='ananaghqfth',
-            email='akwasi7@gmail.com',
+            username='Fremah',
+            password='akuaghfad',
+            password2='akuaghfad',
+            email='Fremah@gmail.com',
         ))
         data = res.data.decode('utf-8')
         assert res.status == '200 OK'
