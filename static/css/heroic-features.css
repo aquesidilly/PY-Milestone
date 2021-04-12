@@ -1,0 +1,13 @@
+/*!
+ * Start Bootstrap - Style.css (https://startbootstrap.com/template-overviews/style.css)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-style-css/blob/master/LICENSE)
+ */
+
+.card {
+  height: 100%;
+}
+.jumbotron {
+  background-image:url("../images/bg.jpg");
+  background-size: cover;
+}
