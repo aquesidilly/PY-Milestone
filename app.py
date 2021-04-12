@@ -31,7 +31,7 @@ def login():
         if session['logged_in'] is True:
             return redirect(url_for('index', title="Sign In"))
 
-    form = LoginForm(1)
+    form = LoginForm()
 
     if form.validate_on_submit():
         # get all users
