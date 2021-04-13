@@ -1,7 +1,7 @@
-from flask import Flask, render_template, flash, redirect, url_for, request, session
+from Flask import Flask, render_template, flash, redirect, url_for, request, session
 from config import Config
 from form import LoginForm, RegisterForm, CreateMovieForm, EditMovieForm, ConfirmDelete
-from flask_pymongo import PyMongo, DESCENDING
+from Flask_pymongo import PyMongo, DESCENDING
 from bson.objectid import ObjectId
 import bcrypt
 import re
