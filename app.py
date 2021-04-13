@@ -10,7 +10,7 @@ import os
 
 app = Flask(__name__)
 # app.config['MONGO_URI'] = 'mongodb://localhost:27017/movie'
-app.config['Aquesidilly.org'] = os.environ.get("Aquesidilly.org")
+app.config['mongo "mongodb+srv://aquesidilly.yjxkk.mongodb.net/aquesidilly" --username PY-aquesidilly'] = os.environ.get("mongo "mongodb+srv://aquesidilly.yjxkk.mongodb.net/aquesidilly" --username PY-aquesidilly")
 app.config.from_object(Config)
 
 mongo = PyMongo(app)
