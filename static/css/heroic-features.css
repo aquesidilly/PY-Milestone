@@ -8,6 +8,6 @@
   height: 100%;
 }
 .jumbotron {
-  background:url("../images/bg.jpg");
+  background:url("static/images/bg.jpg");
   background-size: cover;
 }
