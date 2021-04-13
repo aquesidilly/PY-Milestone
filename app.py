@@ -1,4 +1,4 @@
-from flask import Flask, render_templates, flash, redirect, url_for, request, session
+from flask import Flask, render_template, flash, redirect, url_for, request, session
 from config import Config
 from form import LoginForm, RegisterForm, CreateMovieForm, EditMovieForm, ConfirmDelete
 from flask_pymongo import PyMongo, DESCENDING
