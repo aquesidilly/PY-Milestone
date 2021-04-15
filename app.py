@@ -1,4 +1,6 @@
 from flask import Flask, render_template, flash, redirect, url_for, request, session
+if os.path.exists("env.py"):
+    import envy
 from config import Config
 from form import LoginForm, RegisterForm, CreateMovieForm, EditMovieForm, ConfirmDelete
 from flask_pymongo import PyMongo, DESCENDING
@@ -200,4 +202,6 @@ def handle_404(exception):
 if __name__ == '__main__':
     app.config['TRAP_BAD_REQUEST_ERRORS'] = False
     app.config['DEBUG'] = True
-    app.run(host='127.0.0.1', debug=False)
+    app.run(host='os.environ.get("IP")', 
+    port=int(os.environ.get("PORT")),
+     debug=False)
