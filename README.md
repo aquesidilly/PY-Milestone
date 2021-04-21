@@ -1,14 +1,14 @@
-Craft Cooking
-Craft Cooking is a Foodie's Dream. With delicious recipes available for all as well as options to add your very own, there is something for everyone. Think you could be the next Jamie Oliver? You have to let the world know of your amazing culinary creations, and you can do so at Craft Cooking! Craft Cooking is an amazing place to learn about new recipes to spice up your meals. Choose from a variety of cuisines, cooking styles and diet types.
+## Movie Application
+   This is a Movie Application where movie lovers can watch movies update and delete movies they have already watched. With various  movies available for all as well as options to add your very own, there is something for everyone. Think you could be the next movie star? You have to let the world know of your amazing  creativity, and you can do so at Movie Application! Movie Application is an amazing place to learn,watch and add new movies to spice up your your collections. You can also choose from a variety of movies uploaded on the app, the type of movies available to watch as well.
 
 UX
 List of User Stories
 
-As an aspiring food blogger, I want to publish a recipe, so that I can gather attention to recipes and amass a following.
-As an office worker with little time, I want to know about recipes that can be done under 1 hour, so I can make a fast meal.
-As a vegan, I want to learn about vegan recipes, so that I can stick to my diet.
-AS someone who wants to lose weight, I want to learn about healthy recipes.
-As a chef, I want to review recipes, so that I can help the culinary community grow in their compentency.
+As an aspiring movie content blogger, I want to publish a movie app , so that I can gather attention to movies and amass a following.
+As an office worker with little time, I want to know about movies that i can watch with in an hour and half or two, so I can be glued to it .
+As a child, I want to learn about  movies that will educate me and broaden my horizon, so that I can learn alot .
+As someone who is depressed and down-hearted, I would want to watch movies which will elevate me.
+As a sick person, I want to watch movies which will catch my interest so i don't think about my illness.
 Features
 Existing Features
 Recipe Creation - Allows users to create their own recipes, by having them fill up a recipe creation form.
@@ -77,7 +77,7 @@ To run the app locally:
 Open the app.py in the main directory.
 Run this python script.
 Click on the local host link address to open the app the web browser.
-You can view the deployed version on Heroku or CraftCooking
+You can view the deployed version on Heroku 
 
 Credits
 Content
