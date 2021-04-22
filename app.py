@@ -156,7 +156,6 @@ def search():
     results = mongo.db.movies.find({
         '$or': [
             {'title': query},
-            {'tags': query},
             {'collections': query},
         ]
     })
