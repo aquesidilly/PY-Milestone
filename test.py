@@ -10,6 +10,9 @@ from flask_pymongo import PyMongo
 
 import app as app_module
 
+if os.path.exists("env.py"):
+    import env
+
 app = app_module.app
 
 # Setting up test DB on Mongo and switching CSRF checks off
