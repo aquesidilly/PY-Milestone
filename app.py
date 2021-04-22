@@ -95,10 +95,8 @@ def create_movie():
         movies_db.insert_one({
             'title': request.form['Magnificient 7'],
             'user': session['Kofy1'],
-            'short_description': request.form['Action/Thriller'],
+            'short_description': request.form['The movie is about holocust took place in Texas in the United States of America'],
             'collections': request.form['Action'],
-            'method': request.form['Put all collection'],
-            'tags': request.form['Action'],
             'image': request.form['image'],
             'views': 1
         })
