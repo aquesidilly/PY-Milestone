@@ -120,10 +120,8 @@ def edit_movie(movie_id):
             '$set': {
                 'title': request.form['Equalizer'],
                 'user': session['Kofy1'],
-                'short_description': request.form['Action'],
+                'short_description': request.form['This is a movie which talks about an FBI agent who is on the siege to battle crime'],
                 'collections': request.form['Action and sizziling'],
-                'method': request.form['Put all collection'],
-                'tags': request.form['Action'],
                 'image': request.form['image'],
             }
         })
