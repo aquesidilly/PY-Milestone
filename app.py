@@ -142,8 +142,8 @@ def delete_movie(movie_id):
         return render_template('delete_movie.html', title="Magnificient 7", form=form)
     form = ConfirmDelete(request.form)
     if form.validate_on_submit():
-        recipes_db = mongo.db.movies
-        recipes_db.delete_one({
+        movies_db = mongo.db.movies
+        movies_db.delete_one({
             '_id': ObjectId(movie_id),
         })
         return redirect(url_for('index', title='Movie Collection Updated'))
