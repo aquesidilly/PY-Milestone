@@ -12,7 +12,7 @@ import os
 
 app = Flask(__name__)
 # app.config['MONGO_URI'] = 'mongodb://localhost:27017/movie'
-app.config['mongodb+srv://PY-aquesidilly:Love19901@cluster0.xmxi1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'] = os.environ.get("mongodb+srv://PY-aquesidilly:Love19901@cluster0.xmxi1.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+app.config['mongodb+srv://PY-aquesidilly:Love19901@cluster0.xmxi1.mongodb.net/Dilly?retryWrites=true&w=majority'] = os.environ.get("mongodb+srv://PY-aquesidilly:Love19901@cluster0.xmxi1.mongodb.net/Dilly?retryWrites=true&w=majority")
 app.config.from_object(Config)
 
 mongo = PyMongo(app)
