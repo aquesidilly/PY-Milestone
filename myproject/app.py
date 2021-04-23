@@ -1,11 +1,9 @@
-from flask import (
-    Flask, flash, redirect, 
-    url_for,request, session)
+from flask import Flask, flash, redirect, url_for,request, session
 from config import Config
 from form import LoginForm, RegisterForm, CreateMovieForm, EditMovieForm, ConfirmDelete
-from itsdangerous import flask_pymongo, PyMongo, DESCENDING
-from itsdangerous import ObjectId
-from itsdangerous import bcrypt
+from flask_pymongo import PyMongo, DESCENDING
+from bson.objectid import ObjectId
+import bcrypt
 import re
 import math 
 import os
